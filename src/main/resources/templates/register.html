@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .validation-message{
+            color: red;
+        }
+    </style>
+</head>
+<body style="background-color:lightblue;">
+<div class="container">
+    <br th:action="@{/register}" method="post" th:object="${user}">
+        <h1 style="text-align:center; color:navy;">ONLINE CANOE RENTAL PORTAL</h1></br>
+        <h2 style="text-align:center; color:navy;">User registration form</h2></br>
+    <h4>Please provide the following information: </h4></br>
+
+        <label>Name</label>
+        <input type="text" id="name" name="name" th:field="*{username}"
+               class="form-control" /><br/>
+        <label  th:if="${#fields.hasErrors('username')}"
+                th:errors="*{username}" class="validation-message"></label><br/>
+
+        <label>Surname</label>
+        <input type="text" id="surname" name="surname" th:field="*{surname}"
+               class="form-control" /><br/>
+        <label  th:if="${#fields.hasErrors('surname')}"
+                th:errors="*{surname}" class="validation-message"></label><br/>
+
+        <label>Email</label>
+        <input type="text" id="email"  th:field="*{email}" name="email"
+               class="form-control" /><br/>
+        <label  th:if="${#fields.hasErrors('email')}"
+                th:errors="*{email}" class="validation-message"></label><br/>
+
+        <label>Password</label>
+        <input type="password" id="password" name="password" th:field="*{password}"
+               class="form-control" /><br/>
+        <label  th:if="${#fields.hasErrors('password')}"
+                th:errors="*{password}" class="validation-message"></label><br/>
+
+        <button class="btn btn-lg" name="Submit" value="login" th:text="Login"></button>
+    </form>
+
+    <div class="alert alert-success" th:text="${successMessage}">
+
+    </div>
+
+</div>
+</body>
+</html>

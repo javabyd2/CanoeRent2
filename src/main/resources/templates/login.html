@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+    <style>
+        form {
+            margin: 20px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color:lightblue;">
+
+
+<form th:action="@{/register}" method="get">
+    <button class="alert" name="registration" type="submit">If you don't have an account please register.</button>
+</form>
+
+<div class="container">
+    <h1 style="text-align:center; color:navy;">ONLINE CANOE RENTAL PORTAL</h1></br>
+    <h2 style="text-align:center; color:navy;">Login page</h2></br>
+    <form th:action="@{/login}" method="post">
+        <strong style="color: navy; padding: 5px">Email address:</strong>
+        <input type="text" id="email" name="email" th:placeholder="Email"
+               class="form-control" /><br/>
+        <strong style="color: navy; padding: 5px">Password:</strong>
+        <input type="password" id="password" name="password" th:placeholder="password"
+               class="form-control" /><br/>
+        <button class="btn btn-lg" name="Submit" value="login" th:text="Login">Login</button>
+    </form>
+</div>
+</body>
+</html>
