@@ -16,39 +16,36 @@
 <div class="container">
     <br th:action="@{/register}" method="post" th:object="${user}">
         <h1 style="text-align:center; color:navy;">ONLINE CANOE RENTAL PORTAL</h1></br>
+        <img src="logo.png" alt="image not loaded properly">
         <h2 style="text-align:center; color:navy;">User registration form</h2></br>
     <h4>Please provide the following information: </h4></br>
 
         <label>Name</label>
-        <input type="text" id="name" name="name" th:field="*{username}"
-               class="form-control" /><br/>
+        <input type="text" placeholder="Provide your name" id="name" name="name" th:field="*{username}"
+               class="form-control" style="width: 500px" /><br/>
         <label  th:if="${#fields.hasErrors('username')}"
                 th:errors="*{username}" class="validation-message"></label><br/>
 
         <label>Surname</label>
-        <input type="text" id="surname" name="surname" th:field="*{surname}"
-               class="form-control" /><br/>
+        <input type="text"  placeholder="Provide your surname" id="surname" name="surname" th:field="*{surname}"
+               class="form-control" style="width: 500px" /><br/>
         <label  th:if="${#fields.hasErrors('surname')}"
                 th:errors="*{surname}" class="validation-message"></label><br/>
 
         <label>Email</label>
-        <input type="text" id="email"  th:field="*{email}" name="email"
-               class="form-control" /><br/>
+        <input type="text" placeholder="Provide your email address" id="email" width="10px"  th:field="*{email}" name="email"
+               class="form-control" style="width: 500px"/><br/>
         <label  th:if="${#fields.hasErrors('email')}"
                 th:errors="*{email}" class="validation-message"></label><br/>
 
         <label>Password</label>
-        <input type="password" id="password" name="password" th:field="*{password}"
-               class="form-control" /><br/>
+        <input type="password" placeholder="Provide password" id="password" name="password" th:field="*{password}"
+               class="form-control" style="width: 500px"/><br/>
         <label  th:if="${#fields.hasErrors('password')}"
                 th:errors="*{password}" class="validation-message"></label><br/>
 
-        <button class="btn btn-lg" name="Submit" value="login" th:text="Login"></button>
+        <button class="btn btn-lg" name="Submit" value="login" th:text="Login">Register now</button>
     </form>
-
-    <div class="alert alert-success" th:text="${successMessage}">
-
-    </div>
 
 </div>
 </body>
