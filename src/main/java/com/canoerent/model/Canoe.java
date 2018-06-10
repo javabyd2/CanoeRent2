@@ -10,16 +10,12 @@ public class Canoe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "canoe_id")
     private Long id;
-
-    @Column(name = "canoe_type")
     private String canoeType;
+    private double price;
 
-
-    @ManyToMany(mappedBy = "canoeSet",cascade = CascadeType.ALL)
-
-    Set<User> userSet = new HashSet<>();
+    @OneToMany(cascade = CascadeType.REFRESH)
+    Set<Rent> rentSet;
 
     public Long getId() {
         return id;
@@ -37,11 +33,29 @@ public class Canoe {
         this.canoeType = canoeType;
     }
 
-    public Set<User> getUserSet() {
-        return userSet;
+    public Set<Rent> getRentSet() {
+        return rentSet;
     }
 
-    public void setUserSet(Set<User> userSet) {
-        this.userSet = userSet;
+    public void setRentSet(Set<Rent> rentSet) {
+        this.rentSet = rentSet;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Canoe(String canoeType, double price, Set<Rent> rentSet) {
+        this.canoeType = canoeType;
+        this.price = price;
+        this.rentSet = rentSet;
+    }
+
+    public Canoe() {
+
     }
 }

@@ -9,40 +9,22 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
     private Long id;
-
-    @Column(unique = true)
     private String name;
-
-    @Column(unique = true)
     private String surname;
-
-    @Column(nullable = false)
     private String email;
-
-    @Column(nullable = false)
     private String password;
-
-    @Column(nullable = false)
     private Long creationTs;
 
+    @OneToMany(cascade = CascadeType.REFRESH)
+    Set<Rent> rentSet;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-
-    @JoinTable(name = "canoe_user",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "canoe_id")
-    )
-
-    Set<User> canoeSet = new HashSet<>();
-
-    public Set<User> getCanoeSet() {
-        return canoeSet;
+    public Set<Rent> getRentSet() {
+        return rentSet;
     }
 
-    public void setCanoeSet(Set<User> canoeSet) {
-        this.canoeSet = canoeSet;
+    public void setRentSet(Set<Rent> rentSet) {
+        this.rentSet = rentSet;
     }
 
     public String getPassword() {
@@ -91,6 +73,18 @@ public class User {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public User(String name, String surname, String email, String password, Long creationTs, Set<Rent> rentSet) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+        this.creationTs = creationTs;
+        this.rentSet = rentSet;
+    }
+
+    public User() {
     }
 }
 
